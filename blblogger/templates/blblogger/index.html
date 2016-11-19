@@ -1,0 +1,33 @@
+{% load humanize %}
+<a href="{% url 'create-blog' %}">Create Blog</a><br/>
+{% if blog %}
+    <ul>
+    {% for b in blog %}
+        <h1>{{ b.heading }}</h1>
+        <h3>{{ b.post|truncatewords:20  }}</h3>
+        <a href="{% url 'detail' b.id %}">Read More</a><br>
+        Posted On:<h5>{{ b.pub_date }}</h5>
+        <h5>{{ b.pub_date|timesince}}</h5>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No blogs are available.</p>
+{% endif %}
+
+{% comment %}<form action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+     <label>{{ field.label_tag }}</label>   {{ field }}
+    {% endfor %}
+    <button type="submit">Submit</button>
+</form>{% endcomment %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+     <label>{{ field.label_tag }}</label>   {{ field }}
+    {% endfor %}
+    <input type="submit" value="Send message" />
+</form>
+
+
