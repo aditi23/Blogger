@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
 from .models import Blog
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class CreateBlog(forms.ModelForm):
@@ -16,7 +17,7 @@ class UserRegister(forms.ModelForm):
         fields = ['username','email','password']
 
 
-class UserLogin(forms.ModelForm):
+class UserLogin(AuthenticationForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:

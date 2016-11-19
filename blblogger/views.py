@@ -102,7 +102,8 @@ class UserLoginView(FormView):
                     login(request,user)
                     return HttpResponseRedirect(self.success_url)
 
-                print("user is not active ")
+                print(form.errors)
 
-            print("not none")
+            print(form.errors)
+        print(form.errors)
         return render(request, self.template_name, {'form': form})
