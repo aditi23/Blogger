@@ -1,5 +1,4 @@
 <form action="" method="post">
-    {% csrf_token %}
     {% for field in form %}
      <label>{{ field.label_tag }}</label>   {{ field }}<br>
     {% endfor %}
